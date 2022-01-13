@@ -1,6 +1,8 @@
 import React from 'react'
+import { useContext } from 'react'
 import { Dialog,withStyles,Box,Typography,List, ListItem, makeStyles} from '@material-ui/core'
 import {GoogleLogin} from 'react-google-login'
+import {AccountContext} from '../../context/AccountProvider'
 
 const useStyles=makeStyles({
     component:{
@@ -41,47 +43,69 @@ const style={
     boxShadow:'none',
     borderRadius:0,
     maxHeight:'100%',
-    maxWidth:'100%',
+    maxWidth: '100%',
+    overflow: 'hidden',
     }
 }
-
-const onLoginSuccess=()=>console.log('Login successful')
-
-const onLoginFailure=()=>console.log('Login failed')
 
 const Login = ({classes}) => {
     const class1=useStyles()
     const qrurl = 'https://www.ginifab.com/feeds/qr_code/img/qrcode.jpg';
     const clientID='1082892028021-l0fea27hitvlg5f7l048livj35v43ho9.apps.googleusercontent.com'
+    
+    const {account,setAccount} = useContext(AccountContext)
+
+    const onLoginSuccess = (res) => {
+        console.log("Login successful",res.profileObj);
+        setAccount(res.profileObj)
+    }
+
+    const onLoginFailure = () => console.log("Login failed");
     return (
-        <Dialog 
-        open={true} 
-        classes={{paper:classes.dialogPaper}}
-        BackdropProps={{style:{backgroundColor:'unset'}}}
-        >
-           <Box className={class1.component}>
-               <Box className={class1.leftComponent}>
-                  <Typography className={class1.title}>To use Whatsapp on your computer</Typography>
-                  <List className={class1.list}>
-                      <ListItem>1. Open Whatsapp on your computer</ListItem>
-                        <ListItem>2. Tap Menu or Settings and select Linked Devices</ListItem>
-                        <ListItem>3. Point your phone to this screen to capture the code</ListItem>
-                  </List>
-               </Box>
-               <Box>
-                   <img src={qrurl} alt='qr code' className={class1.qrCode}/>
-                   <GoogleLogin
-                       clientId='1082892028021-l0fea27hitvlg5f7l048livj35v43ho9.apps.googleusercontent.com'
-                       isSignedIn={true}
-                       onSuccess={onLoginSuccess}
-                       onFailure={onLoginFailure}
-                       buttonText=""
-                       cookiePolicy={'single_host_origin'}
-                   />
-               </Box>
-           </Box>
-        </Dialog>
-    )
+		<Dialog
+			open={true}
+			classes={{ paper: classes.dialogPaper }}
+			BackdropProps={{ style: { backgroundColor: "unset" } }}
+		>
+			<Box className={class1.component}>
+				<Box className={class1.leftComponent}>
+					<Typography className={class1.title}>
+						To use Whatsapp on your computer
+					</Typography>
+					<List className={class1.list}>
+						<ListItem>
+							1. Open Whatsapp on your computer
+						</ListItem>
+						<ListItem>
+							2. Tap Menu or Settings and select Linked
+							Devices
+						</ListItem>
+						<ListItem>
+							3. Point your phone to this screen to capture
+							the code
+						</ListItem>
+					</List>
+				</Box>
+				<Box style={{position:'relative'}}>
+					<img
+						src={qrurl}
+						alt="qr code"
+						className={class1.qrCode}
+					/>
+					<Box style={{position:'absolute',left:'50%',top:'50%'}} >
+						<GoogleLogin
+							clientId="1082892028021-l0fea27hitvlg5f7l048livj35v43ho9.apps.googleusercontent.com"
+							isSignedIn={true}
+							onSuccess={onLoginSuccess}
+							onFailure={onLoginFailure}
+							buttonText=""
+							cookiePolicy={"single_host_origin"}
+						/>
+					</Box>
+				</Box>
+			</Box>
+		</Dialog>
+    );
 }
 
 export default withStyles(style)(Login)
