@@ -1,5 +1,6 @@
 import { Box, Dialog,withStyles,makeStyles } from '@material-ui/core'
 import React from 'react'
+import Menu from '../menu/Menu'
 
 const useStyles = makeStyles({
      component: {
@@ -31,9 +32,12 @@ const ChatBox=({classes})=> {
           <Dialog
                open={true}
                classes={{ paper: classes.dialogPaper }}
+               BackdropProps={{style:{backgroundColor:'unset'}}}
           >
 			<Box className={class1.component}>
-				<Box className={class1.leftComponent}>h</Box>
+                    <Box className={class1.leftComponent}>
+                         <Menu/>
+                    </Box>
 				<Box className={class1.rightComponent}>y</Box>
 			</Box>
 		</Dialog>

@@ -51,7 +51,6 @@ const style={
 const Login = ({classes}) => {
     const class1=useStyles()
     const qrurl = 'https://www.ginifab.com/feeds/qr_code/img/qrcode.jpg';
-    const clientID='1082892028021-l0fea27hitvlg5f7l048livj35v43ho9.apps.googleusercontent.com'
     
     const {account,setAccount} = useContext(AccountContext)
 
@@ -61,6 +60,7 @@ const Login = ({classes}) => {
     }
 
     const onLoginFailure = () => console.log("Login failed");
+    
     return (
 		<Dialog
 			open={true}
