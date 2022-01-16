@@ -5,6 +5,7 @@ import { Menu, MenuItem, makeStyles } from '@material-ui/core'
 import { GoogleLogout } from 'react-google-login'
 import { clientID } from '../../constants/data'
 import { AccountContext } from '../../context/AccountProvider';
+import Drawer from '../drawer/InfoDrawer';
 
 const useStyles = makeStyles({
 	menuItem: {
@@ -25,7 +26,9 @@ export default function HeaderMenu() {
      const classes = useStyles();
 	const { setAccount } = useContext(AccountContext)
 	
-     const [open, setOpen] = useState(false)
+	const [open, setOpen] = useState(false)
+	
+	const [openDrawer, setOpenDrawer] = useState(false);
      
      const handleClose = () => { 
           setOpen(false)
@@ -36,10 +39,13 @@ export default function HeaderMenu() {
 	}
 	
 	const onLogoutSuccess = () => { 
-		alert('You have been logged out successfully')
+		alert('You have been logged out successfully');
 		setAccount(null)
 	}
 
+     const toggleDrawer = () => {
+		setOpenDrawer(true);
+	};
      return (
 		<>
 			<MoreVert onClick={handleClick} />
@@ -60,7 +66,7 @@ export default function HeaderMenu() {
 				// className={classes.dialog1}
 			>
 				<MenuItem
-					onClick={handleClose}
+					onClick={()=>{handleClose();toggleDrawer()}}
 					className={classes.menuItem}
 				>
 					Profile
@@ -77,6 +83,7 @@ export default function HeaderMenu() {
 					></GoogleLogout>
 				</MenuItem>
 			</Menu>
+			<Drawer open={openDrawer} setOpen={setOpenDrawer} />
 		</>
 	);
 }

@@ -16,12 +16,11 @@ const useStyles = makeStyles((theme) => ({
 		backgroundColor: "#ffffff",
 		width: "100%",
 		margin: "0 13px",
-		paddingRight: 120,
 		paddingLeft: 3,
-		[theme.breakpoints.up("sm")]: {
-			marginLeft: theme.spacing(3),
-			width: "auto",
-		},
+		// [theme.breakpoints.up("sm")]: {
+		// 	marginLeft: theme.spacing(3),
+		// 	width: "auto",
+		// },
 	},
 	searchIcon: {
 		padding: theme.spacing(0, 0),
@@ -34,19 +33,21 @@ const useStyles = makeStyles((theme) => ({
 		color: "#919191",
 	},
 	inputRoot: {
+		width: "100%",
 		color: "inherit",
 	},
 	inputInput: {
 		padding: theme.spacing(1, 1, 1, 0),
 		// vertical padding + font size from searchIcon
-		paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+		paddingLeft: 16,
+		marginLeft: 30,
 		transition: theme.transitions.create("width"),
 		width: "100%",
 		fontSize: "14px",
 		height: 15,
-		[theme.breakpoints.up("md")]: {
-			width: "20ch",
-		},
+		// [theme.breakpoints.up("md")]: {
+		// 	width: "20ch",
+		// },
 	},
 }));
 
