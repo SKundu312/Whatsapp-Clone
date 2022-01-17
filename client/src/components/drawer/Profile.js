@@ -3,6 +3,9 @@ import { Box, makeStyles, Typography } from '@material-ui/core'
 import {AccountContext} from '../../context/AccountProvider'
 
 const useStyles = makeStyles({
+     component: {
+          overflow:'overlay'
+     },
      imgCont: {
           display: 'flex',
           justifyContent: 'center',
@@ -41,7 +44,7 @@ export default function Profile() {
      const classes = useStyles()
      const { account} = useContext(AccountContext)
      return (
-		<>
+		<Box classname={classes.component}>
 			<Box className={classes.imgCont}>
 				<img
 					src={account.imageUrl}
@@ -63,6 +66,6 @@ export default function Profile() {
 				<Typography>About</Typography>
 				<Typography>YOOO</Typography>
 			</Box>
-		</>
+		</Box>
 	);
 }

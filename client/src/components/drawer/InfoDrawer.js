@@ -11,6 +11,7 @@ const useStyles = makeStyles({
           color: '#fff',
           display: 'flex',
           alignItems: 'center',
+          // overflow:'hidden',
           '&>*': {
                marginTop:39,
                padding: 15,
@@ -20,7 +21,7 @@ const useStyles = makeStyles({
      },
      component: {
           backgroundColor: '#ededed',
-          height:'100%'
+          height:'100%',
      }
 })
 

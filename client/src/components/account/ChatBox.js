@@ -1,7 +1,7 @@
 import { Box, Dialog,withStyles,makeStyles } from '@material-ui/core'
 import React from 'react'
 import Menu from '../menu/Menu'
-
+import ChatWindow from '../chatWindow/ChatWindow'
 const useStyles = makeStyles({
      component: {
           display: 'flex',
@@ -38,7 +38,9 @@ const ChatBox=({classes})=> {
                     <Box className={class1.leftComponent}>
                          <Menu/>
                     </Box>
-				<Box className={class1.rightComponent}>y</Box>
+                    <Box className={class1.rightComponent}>
+                         <ChatWindow/>
+                    </Box>
 			</Box>
 		</Dialog>
 	);

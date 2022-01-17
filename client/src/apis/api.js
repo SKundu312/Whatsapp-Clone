@@ -12,8 +12,18 @@ export const addUser = async (data) => {
 
 export const getUsers = async() => {
 	try {
-		return await axios.get(`${url}/users`);
+          let resp = await axios.get(`${url}/users`);
+          console.log(resp);
+          return resp.data;
 	} catch (err) {
 		console.log("Error while calling getUsers api", err);
 	}
 };
+
+export const setConvo = async (data) => {
+     try {
+          await axios.post(`${url}/convo`,data)
+     }catch(err) {
+          console.log('Error while calling setConvo api',err);
+     }
+}
