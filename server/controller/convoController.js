@@ -26,4 +26,17 @@ const Conversation = async(req, res) => {
      }
 }
 
-module.exports = {Conversation};
+const getConvo = async (req, res) => { 
+     try {
+          const obj = await ConversationModel.findOne({
+			$all: [req.body.receiver, req.body.sender],
+		});
+          if (!obj) {
+               return res.status(404).send({ message: "Conversation not found" });}
+          res.status(200).json({message:"Conversation found successfully",data:obj});
+     } catch (err) {
+          res.status(500).send(err)
+     }
+}
+
+module.exports = {Conversation,getConvo};

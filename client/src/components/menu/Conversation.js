@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react'
+import  { useEffect, useState, useContext } from 'react'
 import {Box, makeStyles} from '@material-ui/core'
 import { getUsers } from '../../apis/api'
 import Chat from './Chat'

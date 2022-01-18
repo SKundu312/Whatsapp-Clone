@@ -10,7 +10,10 @@ const useStyles = makeStyles({
           minWidth:'380px'
      },
      rightComponent: {
-          borderLeft:'1px solid rgba(0,0,0,0.14)',
+          borderLeft: '1px solid rgba(0,0,0,0.14)',
+          width: '70%',
+          minWidth: 300,
+          height: '100%',
      },
 })
 
