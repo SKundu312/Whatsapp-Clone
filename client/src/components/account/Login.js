@@ -88,13 +88,19 @@ const Login = ({classes}) => {
 						</ListItem>
 					</List>
 				</Box>
-				<Box style={{position:'relative'}}>
+				<Box style={{ position: "relative" }}>
 					<img
 						src={qrurl}
 						alt="qr code"
 						className={class1.qrCode}
 					/>
-					<Box style={{position:'absolute',left:'50%',top:'50%'}} >
+					<Box
+						style={{
+							position: "absolute",
+							left: "50%",
+							top: "50%",
+						}}
+					>
 						<GoogleLogin
 							clientId="1082892028021-l0fea27hitvlg5f7l048livj35v43ho9.apps.googleusercontent.com"
 							isSignedIn={true}

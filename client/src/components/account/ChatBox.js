@@ -1,7 +1,10 @@
 import { Box, Dialog,withStyles,makeStyles } from '@material-ui/core'
-import React from 'react'
+import React,{useContext} from 'react'
 import Menu from '../menu/Menu'
 import ChatWindow from '../chatWindow/ChatWindow'
+import { UserContext } from '../../context/UserProvider'
+import EmptyChat from '../chatWindow/EmptyChat'
+
 const useStyles = makeStyles({
      component: {
           display: 'flex',
@@ -30,7 +33,8 @@ const style = {
 };
 
 const ChatBox=({classes})=> {
-    const class1=useStyles()
+     const class1 = useStyles()
+     const {person}=useContext(UserContext)
      return (
           <Dialog
                open={true}
@@ -42,7 +46,9 @@ const ChatBox=({classes})=> {
                          <Menu/>
                     </Box>
                     <Box className={class1.rightComponent}>
-                         <ChatWindow/>
+                         {
+                              Object.keys(person).length !== 0 ? <ChatWindow/> : <EmptyChat/>
+                         }
                     </Box>
 			</Box>
 		</Dialog>

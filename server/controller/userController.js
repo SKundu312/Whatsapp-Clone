@@ -5,9 +5,9 @@ const addUser = async (req, res) => {
           const user = new User(req.body);
           let existingUser=await User.findOne({googleId:user.googleId});
           if (existingUser){
-               return res.send('User already exists')}
+               return res.status(200).send('User already exists')}
           await user.save();
-          res.send('User added successfully');
+          res.status(200).send('User added successfully');
      } catch (error) {
           res.status(500).send(error);
      }

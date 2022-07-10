@@ -3,10 +3,10 @@ const {addUser,getUsers} = require('../controller/userController')
 const { Conversation,getConvo } = require('../controller/convoController')
 const {newMsg} = require('../controller/msgController')
 
-router.post('/add', addUser)
-router.get('/users',getUsers)
-router.post('/convo/add',Conversation)
-router.get('/convo/get', getConvo)
-router.post('/msg/add', newMsg)
+router.post('/api/add', addUser)
+router.get('/api/users',getUsers)
+router.post('/api/convo/add',Conversation)
+router.get('/api/convo/get', getConvo)
+router.post('/api/msg/add', newMsg)
 
 module.exports = router;
